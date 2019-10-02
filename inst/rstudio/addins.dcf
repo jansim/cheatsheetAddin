@@ -1,0 +1,4 @@
+Name: Browse cheatsheets
+Description: Search through available cheatsheets and open them.
+Binding: browseCheatsheets
+Interactive: true
