@@ -6,6 +6,4 @@ when activated. When a cheatsheet is clicked in the list it will open in the loc
 ```r
 install.packages('devtools')
 devtools::install_github('jansim/cheatsheetAddin')
-``
-
 ```
