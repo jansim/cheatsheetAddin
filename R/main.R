@@ -1,18 +1,8 @@
-# Hello, world!
-#
-# This is an example function named 'hello'
-# which prints 'Hello, world!'.
-#
-# You can learn more about package authoring with RStudio at:
-#
-#   http://r-pkgs.had.co.nz/
-#
-# Some useful keyboard shortcuts for package authoring:
-#
-#   Install Package:           'Cmd + Shift + B'
-#   Check Package:             'Cmd + Shift + E'
-#   Test Package:              'Cmd + Shift + T'
-
+#' Open and download cheatsheet in the local browser
+#'
+#' @param entry One row from getListOfCheatsheets()
+#'
+#' @examples openCheatsheet(getListOfCheatsheets()[0])
 openCheatsheet <- function(entry) {
   temp <- paste0(tempdir(), "/", entry$name)
   if (!file.exists(temp)) {
@@ -20,15 +10,19 @@ openCheatsheet <- function(entry) {
     download.file(entry$download_url, temp)
   }
   browseURL(temp)
-  # unlink(temp) # do this at some point?!
 }
 
 # ==== User Interface (Shiny) ====
 library(shiny)
 library(miniUI)
-# jsonlite, DT?
 
-getListOfCheatSheets <- function() {
+#' Download a List of available Cheatsheets
+#'
+#' @return dataframe of available cheatsheets
+#' @export
+#'
+#' @examples getListOfCheatsheets()
+getListOfCheatsheets <- function() {
   files <- jsonlite::fromJSON("https://api.github.com/repos/rstudio/cheatsheets/contents/")
   # filter out everything that is not a pdf file
   pdfs <- files[grep(".pdf$", files$name),]
@@ -40,8 +34,15 @@ getListOfCheatSheets <- function() {
   pdfs
 }
 
+#' Start shiny gadget to browse cheatsheets
+#'
+#' This is the actual addin.
+#'
+#' @export
+#'
+#' @examples browseCheatsheets()
 browseCheatsheets <- function() {
-  cheatsheets <- getListOfCheatSheets()
+  cheatsheets <- getListOfCheatsheets()
 
   # Our ui will be a simple gadget page, which
   # simply displays the time in a 'UI' output.
