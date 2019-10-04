@@ -1,12 +1,12 @@
 Package: cheatsheetAddin
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Title: An RStudio-Addin to quickly show available cheatsheets.
+Version: 1.0.0
+Author: Jan Simson
+Maintainer: Jan Simson <no@email>
+Description: This package registers itself as an addin and lists all available cheatsheets
+  when activated. When a cheatsheet is clicked in the list it will open in the local PDF viewer.
+License: MIT
 Encoding: UTF-8
 LazyData: true
 Imports:
